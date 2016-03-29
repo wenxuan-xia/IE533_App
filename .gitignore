@@ -1,5 +1,4 @@
 # app files
-*__*__.py
 *.virtualenv*
 db.sqlite3
 
