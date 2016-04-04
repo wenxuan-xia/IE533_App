@@ -1,5 +1,7 @@
 {% load staticfiles %}
-<html class="overthrow-enabled" ng-app="IE533">
+
+
+<html class="overthrow-enabled" >
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE-Edge, Chrome=1">
@@ -14,39 +16,113 @@
     <script src="{% static 'mobile-angular/dist/js/mobile-angular-ui.min.js'%}"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
     <script src="{% static 'jquery-1.12.0.min.js'%}"></script>
     <script src="{% static 'bootstrap-3.3.6-dist/js/bootstrap.min.js'%}"> </script>
     <script src="{% static 'main.js'%}"></script>
+
+{% verbatim %}
 </head>
-<body ng-controller="MainController" class="ng-scope has-navbar-top">
+<body ng-app="MainApp" class="ng-scope has-navbar-top">
     <div class="navbar navbar-app navbar-absolute-top">
         <div class="navbar-brand navbar-brand-center">
-            <span class="Steps">Steps:</span>
-            <span class="Steps">1/4</span>
+            <span class="Steps">Step:</span>
+            <span class="Steps"> <span class="currentStep">1</span>/4 </span>
         </div>
     </div>
 
-    <div class="app-content scrollable">
+    <div class="app-content">
         <div class="list-group text-center">
-            <div class="list-group-item list-group-item-home instruction">
-                <h1>Goal: 15s</h1>
-                <h4>click START, after your 15 seconds, click STOP</h4>
+            <div class="list-group-item list-group-item-home instruction" id="instruction">
+                <h1>Goal: <span class="goal">15</span> Seconds</h1>
+                <h4>click START, after your <span class="goal">15s</span> seconds, click STOP</h4>
             </div>
         </div>
 
-        <div class="list-group-item list-group-item-home button-item">
+        <div class="list-group-item list-group-item-home button-item" id="main-content">
             <center>
-                <button class="btn btn-default start-button" id="action-button" onclick="start()">
+                <button class="btn btn-default start-button" id="action-button" onclick="this.blur();start();">
                     <div class="action-button-word" id="action-button-word">START</div>
                 </button>
             </center>
         </div>
 
-        <div class="list-next">
-            <a class="btn btn-next" next-step="1" id="NextButton" onclick="next()">Next</a>
-        </div>
-    </div>
+        <div class="list-group-item list-group-item-home information" id="information" >
+            <form action="/submit" method="post"
+                    ng-submit="submitForm()" ng-controller="FormValidatingController">
+                {% endverbatim %}
+                {% csrf_token %}
+                {% verbatim %}
+                <div class="question">
+                    <h4>1. Gender:</h4>
+                    <div class="radio">
+                      <label class="question-label question-label-first"><input type="radio" name="gender" value="f" ng-model="gender" ng-required="!gender">female</label>
+                      <label class="question-label"><input type="radio" name="gender" value="m" ng-model="gender" ng-required="!gender">male</label>
+                    </div>
+                </div>
 
+                <div class="question">
+                    <h4>2. Age:</h4>
+                    <div class="radio">
+                      <label class="question-label question-label-first multi-line-choice"><input type="radio" name="age" value="0" ng-model="age" ng-required="!age">Less than 15</label>
+                      <label class="question-label question-label-first multi-line-choice"><input type="radio" name="age" value="1" ng-model="age" ng-required="!age">[15-30)</label>
+                      <label class="question-label question-label-first multi-line-choice"><input type="radio" name="age" value="3" ng-model="age" ng-required="!age">[30-45)</label> </br>
+                      <label class="question-label question-label-first multi-line-choice"><input type="radio" name="age" value="4" ng-model="age" ng-required="!age">[45-60)</label>
+                      <label class="question-label question-label-first multi-line-choice"><input type="radio" name="age" value="6" ng-model="age" ng-required="!age">Greater than 60</label> </br>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <h4>3. Career:</h4>
+                    <div class="radio">
+                      <label class="question-label question-label-first"><input type="radio" name="career" value="t" ng-model="tech" ng-required="!tech">Technical</label>
+                      <label class="question-label"><input type="radio" name="career" value="n" ng-model="tech" ng-required="!tech">Non-Technical</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <h4>4. Testing Environment:</h4>
+                    <div class="radio">
+                      <label class="question-label question-label-first"><input type="radio" name="testenv" value="q" ng-model="testenv" ng-required="!testenv">quiet</label>
+                      <label class="question-label"><input type="radio" name="career" value="n" ng-model="testenv" ng-required="!testenv">noisy</label>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <h4>5. Do you play music?</h4>
+                    <div class="radio">
+                      <label class="question-label question-label-first"><input type="radio" name="musician" value="true" ng-model="musician" ng-required="!musician">Yes</label>
+                      <label class="question-label"><input type="radio" name="musician" value="false" ng-model="musician" ng-required="!musician">No</label>
+                    </div>
+                </div>
+                <input id="s15" name="s15" type="hidden"/>
+                <input id="s30" name="s30" type="hidden"/>
+                <input id="s60" name="s60" type="hidden"/>
+
+                <tt hidden>gender = {{gender}}</tt>
+                <tt hidden>age = {{ age }}</tt>
+                <tt hidden>musician = {{ musician }}</tt>
+                <tt hidden>tech = {{ tech }}</tt>
+                <tt hidden>testenv = {{ testenv }}</tt>
+
+                <center>
+                    <input type="Submit" class="btn btn-primary btn-lg"></input>
+                    <!--
+                    NOTICE:
+                    The usage of data is for IE533 course.
+                    If you check the origin js code, you will find it is not a safe method to store data because I do not have enough time to do this, please do not make our data dirty.
+                    Thank you.
+                    -->
+                </center>
+            </form>
+        </div>
+
+        <!-- <div class="list-next">
+            <a class="btn btn-next" next-step="1" id="NextButton" onclick="next()">Next</a>
+        </div> -->
+
+    </div>
 
 </body>
 </html>
+{% endverbatim %}
