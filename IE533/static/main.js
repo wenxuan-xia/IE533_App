@@ -34,10 +34,12 @@ function end() {
     $("#NextButton").removeClass("disabled");
 
     var milliSecond = endTime-startTime;
-    alert("Your Time:   " + milliSecond/1000.0 + " Second, result is saved, please tap 'next' to continue");
+    alert("Your Time:   " + milliSecond/1000.0 + " Seconds, result is saved.");
     target = "s" + sequence[currentStep];
     $("#"+target).val(milliSecond/1000.0);
     if (currentStep == 2) {
+        currentStep += 1;
+        $(".currentStep").html(currentStep+1);
         change_msg();
     } else {
         $("#instruction").toggle("slow");

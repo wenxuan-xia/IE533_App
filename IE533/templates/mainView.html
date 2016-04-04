@@ -54,7 +54,7 @@
                 {% csrf_token %}
                 {% verbatim %}
                 <div class="question">
-                    <h4>1. Gender:</h4>
+                    <h2>1. Gender:</h2>
                     <div class="radio">
                       <label class="question-label question-label-first"><input type="radio" name="gender" value="f" ng-model="gender" ng-required="!gender">female</label>
                       <label class="question-label"><input type="radio" name="gender" value="m" ng-model="gender" ng-required="!gender">male</label>
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="question">
-                    <h4>2. Age:</h4>
+                    <h2>2. Age:</h2>
                     <div class="radio">
                       <label class="question-label question-label-first multi-line-choice"><input type="radio" name="age" value="0" ng-model="age" ng-required="!age">Less than 15</label>
                       <label class="question-label question-label-first multi-line-choice"><input type="radio" name="age" value="1" ng-model="age" ng-required="!age">[15-30)</label>
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="question">
-                    <h4>3. Career:</h4>
+                    <h2>3. Career:</h2>
                     <div class="radio">
                       <label class="question-label question-label-first"><input type="radio" name="career" value="t" ng-model="tech" ng-required="!tech">Technical</label>
                       <label class="question-label"><input type="radio" name="career" value="n" ng-model="tech" ng-required="!tech">Non-Technical</label>
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="question">
-                    <h4>4. Testing Environment:</h4>
+                    <h2>4. Testing Environment:</h2>
                     <div class="radio">
                       <label class="question-label question-label-first"><input type="radio" name="testenv" value="q" ng-model="testenv" ng-required="!testenv">quiet</label>
                       <label class="question-label"><input type="radio" name="career" value="n" ng-model="testenv" ng-required="!testenv">noisy</label>
@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="question">
-                    <h4>5. Do you play music?</h4>
+                    <h2>5. Do you play music?</h2>
                     <div class="radio">
                       <label class="question-label question-label-first"><input type="radio" name="musician" value="true" ng-model="musician" ng-required="!musician">Yes</label>
                       <label class="question-label"><input type="radio" name="musician" value="false" ng-model="musician" ng-required="!musician">No</label>
