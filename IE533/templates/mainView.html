@@ -84,7 +84,7 @@
                     <h2>4. Testing Environment:</h2>
                     <div class="radio">
                       <label class="question-label question-label-first"><input type="radio" name="testenv" value="q" ng-model="testenv" ng-required="!testenv">quiet</label>
-                      <label class="question-label"><input type="radio" name="career" value="n" ng-model="testenv" ng-required="!testenv">noisy</label>
+                      <label class="question-label"><input type="radio" name="testenv" value="n" ng-model="testenv" ng-required="!testenv">noisy</label>
                     </div>
                 </div>
 
@@ -99,11 +99,11 @@
                 <input id="s30" name="s30" type="hidden"/>
                 <input id="s60" name="s60" type="hidden"/>
 
-                <tt hidden>gender = {{gender}}</tt>
-                <tt hidden>age = {{ age }}</tt>
-                <tt hidden>musician = {{ musician }}</tt>
-                <tt hidden>tech = {{ tech }}</tt>
-                <tt hidden>testenv = {{ testenv }}</tt>
+                <tt >gender = {{ gender | json}}</tt>
+                <tt >age = {{ age | json }}</tt>
+                <tt >musician = {{ musician | json }}</tt>
+                <tt >tech = {{ tech | json }}</tt>
+                <tt >testenv = {{ testenv | json}}</tt>
 
                 <center>
                     <input type="Submit" class="btn btn-primary btn-lg"></input>
