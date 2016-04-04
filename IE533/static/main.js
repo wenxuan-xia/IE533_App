@@ -52,6 +52,7 @@ function end() {
 }
 
 $(document).ready( function () {
+    // $("#instruction").toggle()
     // $("#main-content").toggle();
     $("#information").toggle();
     var b = [0, 0, 0];
