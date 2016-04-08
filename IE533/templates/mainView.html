@@ -30,7 +30,7 @@
             <span class="Steps"> <span class="currentStep">1</span>/4 </span>
         </div>
     </div>
-
+<div class="scrollable">
     <div class="app-content">
         <div class="list-group text-center">
             <div class="list-group-item list-group-item-home instruction" id="instruction">
@@ -47,7 +47,7 @@
             </center>
         </div>
 
-        <div class="list-group-item list-group-item-home information" id="information" >
+        <div class="list-group-item list-group-item-home information scrollable-content" id="information" >
             <form action="/submit" method="post"
                     ng-submit="submitForm()" ng-controller="FormValidatingController">
                 {% endverbatim %}
@@ -95,6 +95,7 @@
                       <label class="question-label"><input type="radio" name="musician" value="false" ng-model="musician" ng-required="!musician">No</label>
                     </div>
                 </div>
+
                 <input id="s15" name="s15" type="hidden"/>
                 <input id="s30" name="s30" type="hidden"/>
                 <input id="s60" name="s60" type="hidden"/>
@@ -114,6 +115,7 @@
                     Thank you.
                     -->
                 </center>
+                <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             </form>
         </div>
 
@@ -122,6 +124,7 @@
         </div> -->
 
     </div>
+</div>
 
 </body>
 </html>
