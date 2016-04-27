@@ -1,6 +1,5 @@
 # app files
 *.virtualenv*
-db.sqlite3
 *.DS_Store
 *migrations*
 
